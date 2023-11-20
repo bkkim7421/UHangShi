@@ -15,7 +15,6 @@ extern COORD mouse;
 extern int clicked;
 extern FILE* Storage[4];
 extern KEY_INFO key;
-
 extern DWORD mode;
 extern INPUT_RECORD record; // 콘솔 입력 버퍼의 입력 이벤트 구조체
 extern DWORD read; // unsigned long ( 데이터 기본 처리 단위인 WORD의 2배 )
