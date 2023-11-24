@@ -43,7 +43,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -137,22 +137,24 @@
     <ClInclude Include="ManyLayerImplementation.h" />
     <ClInclude Include="ManyLayerInterface.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="UHangShi.rc" />
+    <ResourceCompile Include="UHangShi1.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="box.bmp" />
-    <Image Include="exit.bmp" />
-    <Image Include="exit_clicked.bmp" />
-    <Image Include="load.bmp" />
-    <Image Include="load_clicked.bmp" />
-    <Image Include="load_screen.bmp" />
-    <Image Include="new_game.bmp" />
-    <Image Include="new_game_clicked.bmp" />
-    <Image Include="pop_up.bmp" />
-    <Image Include="start_bg.bmp" />
-    <Image Include="title.bmp" />
+    <Image Include="InGame\box.bmp" />
+    <Image Include="InGame\start_bg.bmp" />
+    <Image Include="MainPage\box.bmp" />
+    <Image Include="MainPage\exit.bmp" />
+    <Image Include="MainPage\exit_clicked.bmp" />
+    <Image Include="MainPage\load.bmp" />
+    <Image Include="MainPage\load_clicked.bmp" />
+    <Image Include="MainPage\load_screen.bmp" />
+    <Image Include="MainPage\new_game.bmp" />
+    <Image Include="MainPage\new_game_clicked.bmp" />
+    <Image Include="MainPage\start_bg.bmp" />
+    <Image Include="MainPage\title.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -16,6 +16,36 @@ FILE* Storage[4];
 
 extern void MainPage();
 
+// play sound
+void SoundEffect(char filePath[], MCI_OPEN_PARMS* soundEffect, int* dwID, bool load, bool playing, bool repeat)
+{
+
+	soundEffect->lpstrElementName = filePath;//파일 오픈
+	soundEffect->lpstrDeviceType = "mpegvideo";//mp3 형식
+	*dwID = soundEffect->wDeviceID;
+	mciSendCommand(0, MCI_OPEN, MCI_OPEN_ELEMENT | MCI_OPEN_TYPE, (DWORD)(LPVOID) & *soundEffect);
+
+	if (!load)
+	{
+		if (playing) {
+			if (repeat) {
+				mciSendCommand(*dwID, MCI_PLAY, MCI_DGV_PLAY_REPEAT, (DWORD)(LPVOID) & *soundEffect); //음악 반복 재생
+			}
+			else {
+				mciSendCommand(*dwID, MCI_SEEK, MCI_SEEK_TO_START, (DWORD)(LPVOID)NULL); //음원 재생 위치를 처음으로 초기화
+				mciSendCommand(*dwID, MCI_PLAY, MCI_NOTIFY, (DWORD)(LPVOID) & *soundEffect);   //음악 한 번만 재생
+			}
+		}
+		else {
+			mciSendCommand(*dwID, MCI_PAUSE, MCI_DGV_PLAY_REPEAT, (DWORD)(LPVOID) & *soundEffect);   //음악 재생 중지
+			mciSendCommand(*dwID, MCI_SEEK, MCI_SEEK_TO_START, (DWORD)(LPVOID)NULL); //음원 재생 위치를 처음으로 초기화
+		}
+	}
+	return;
+}
+
+
+
 
 // thread reading mouse position and whether it is clicked
 void MouseThread() {

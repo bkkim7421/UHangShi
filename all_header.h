@@ -10,6 +10,8 @@
 #include <process.h>
 #include <mmsystem.h>
 #include <conio.h>
+#pragma comment (lib, "winmm.lib")
+#include <Digitalv.h>
 #include "ManyLayer.h"
 
 

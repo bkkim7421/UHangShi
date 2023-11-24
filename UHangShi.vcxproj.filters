@@ -13,14 +13,14 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="리소스 파일\MainPage">
-      <UniqueIdentifier>{96e39288-a3a4-404f-a1f4-1d29b9842920}</UniqueIdentifier>
-    </Filter>
     <Filter Include="헤더 파일\ManyLayer">
       <UniqueIdentifier>{9384dc1e-afb1-4134-b094-9cf11e2a6c5e}</UniqueIdentifier>
     </Filter>
     <Filter Include="리소스 파일\InGame">
-      <UniqueIdentifier>{4f502797-2864-4610-82f2-505a18eea3ce}</UniqueIdentifier>
+      <UniqueIdentifier>{daeeb3e3-ac6c-4280-beb2-7059101554c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="리소스 파일\MainPage">
+      <UniqueIdentifier>{36bc15af-ef57-491b-940e-e74a575124e3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -50,45 +50,51 @@
     <ClInclude Include="ManyLayerInterface.h">
       <Filter>헤더 파일\ManyLayer</Filter>
     </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="UHangShi.rc">
+    <ResourceCompile Include="UHangShi1.rc">
       <Filter>리소스 파일</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="exit.bmp">
+    <Image Include="MainPage\title.bmp">
       <Filter>리소스 파일\MainPage</Filter>
     </Image>
-    <Image Include="exit_clicked.bmp">
+    <Image Include="MainPage\exit.bmp">
       <Filter>리소스 파일\MainPage</Filter>
     </Image>
-    <Image Include="title.bmp">
+    <Image Include="MainPage\exit_clicked.bmp">
       <Filter>리소스 파일\MainPage</Filter>
     </Image>
-    <Image Include="load.bmp">
+    <Image Include="MainPage\load.bmp">
       <Filter>리소스 파일\MainPage</Filter>
     </Image>
-    <Image Include="load_clicked.bmp">
+    <Image Include="MainPage\load_clicked.bmp">
       <Filter>리소스 파일\MainPage</Filter>
     </Image>
-    <Image Include="new_game.bmp">
+    <Image Include="MainPage\load_screen.bmp">
       <Filter>리소스 파일\MainPage</Filter>
     </Image>
-    <Image Include="new_game_clicked.bmp">
+    <Image Include="MainPage\new_game.bmp">
       <Filter>리소스 파일\MainPage</Filter>
     </Image>
-    <Image Include="start_bg.bmp">
+    <Image Include="MainPage\new_game_clicked.bmp">
       <Filter>리소스 파일\MainPage</Filter>
     </Image>
-    <Image Include="box.bmp">
+    <Image Include="MainPage\start_bg.bmp">
       <Filter>리소스 파일\MainPage</Filter>
     </Image>
-    <Image Include="load_screen.bmp">
+    <Image Include="InGame\box.bmp">
+      <Filter>리소스 파일\InGame</Filter>
+    </Image>
+    <Image Include="MainPage\box.bmp">
       <Filter>리소스 파일\MainPage</Filter>
     </Image>
-    <Image Include="pop_up.bmp">
-      <Filter>리소스 파일</Filter>
+    <Image Include="InGame\start_bg.bmp">
+      <Filter>리소스 파일\InGame</Filter>
     </Image>
   </ItemGroup>
 </Project>

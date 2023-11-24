@@ -4,10 +4,15 @@
 
 extern FILE* Storage[4];
 extern bool MainPageFlag;
+extern MCI_OPEN_PARMS MainMusic;
+extern int MainMusicID;
 
 extern FILE* OpenStorage_i(int n, int rw);
+extern void SoundEffect(char filePath[], MCI_OPEN_PARMS* soundEffect, int* dwID, bool load, bool playing, bool repeat);
 
 ManyLayer GameLayer = { NULL, 0, NULL, 0, RGB(255, 255, 255), NULL, NULL, _initialize, _renderAll, NULL, _getBitmapHandle };
+MCI_OPEN_PARMS InGameMusic;
+int InGameMusicID;
 
 bool GamePageFlag =1;
 
@@ -30,6 +35,10 @@ void WritePG(int N, int PG)
 
 extern void StartGame(int N, int PG)
 {
+	SoundEffect("Musics/BabyElephantWalk60.wav", &MainMusic, &MainMusicID, 0, 0, 0);
+	SoundEffect("Musics/InGameBGM.wav", &InGameMusic, &InGameMusicID, 1, 0, 0);
+	SoundEffect("Musics/InGameBGM.wav", &InGameMusic, &InGameMusicID, 0, 1, 1);
+
 	GameLayer.initialize(&GameLayer);
 	if(!GamePageFlag){
 		GamePageFlag = 1;
@@ -41,10 +50,21 @@ extern void StartGame(int N, int PG)
 	case 0:
 		WritePG(N, 0);
 		GameLayer.images = (Image[]){
-			{ GameLayer.getBitmapHandle(L"start_bg.bmp"), 0, 0, 2.38, false },
-			{ GameLayer.getBitmapHandle(L"start_bg.bmp"), 2000, 0, 2.38, false }
+			{ GameLayer.getBitmapHandle(L"InGame/start_bg.bmp"), 0, 0, 2.38, false },
+			{ GameLayer.getBitmapHandle(L"InGame/start_bg.bmp"), 2000, 0, 2.38, false },
+			{ GameLayer.getBitmapHandle(L"InGame/box.bmp"), 900, 1300, 1.3, false },
 		};
-		GameLayer.imageCount = 2;
+		GameLayer.imageCount = 3;
+
+		GameLayer.texts = (Text[]){
+			{ L"1번 저장소를 덮어쓰겠습니까?", 1150, 1500, 30, 40, 600, L"둥근모꼴", RGB(0, 0, 0), false },
+			{ L"[Y]es", 1400, 1150, 48, 64, 600, L"둥근모꼴", RGB(0, 0, 0), true },
+			{ L"[N]o", 2250, 1150, 48, 64, 600, L"둥근모꼴", RGB(0, 0, 0), true },
+		};
+		GameLayer.textCount = 3;
+		Sleep(1000);
+
+
 	}
 
 	Sleep(10000);
