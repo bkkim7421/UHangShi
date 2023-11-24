@@ -27,6 +27,7 @@ extern int InGameMusicID;
 extern void StartGame(int N);
 extern FILE* OpenStorage_i(int n, int rw);
 extern void SoundEffect(char filePath[], MCI_OPEN_PARMS* soundEffect, int* dwID, bool load, bool playing, bool repeat);
+extern void ToggleLayer(ManyLayer* ML, int img_s, int img_e, int txt_s, int txt_e);
 
 bool MainPageFlag;
 ManyLayer manyLayer = { NULL, 0, NULL, 0, RGB(255, 255, 255), NULL, NULL, _initialize, _renderAll, NULL, _getBitmapHandle };
@@ -171,14 +172,6 @@ bool ReplaceStorage()
 	}
 }
 
-void ToggleReplaceScreen()
-{
-	manyLayer.images[REPLACE_SCREEN_IDX].isHidden = !manyLayer.images[REPLACE_SCREEN_IDX].isHidden;
-	for (int i = 0; i < REPLACE_TXT_SIZE; i++)
-		manyLayer.texts[REPLACE_TXT_IDX[i]].isHidden = !manyLayer.texts[REPLACE_TXT_IDX[i]].isHidden;
-	Sleep(100);
-}
-
 // create main page
 void MainPage()
 {
@@ -221,12 +214,13 @@ void MainPage()
 			if (clicked == 1) {
 				int idx = GetEmptyStorage();
 				if (idx < 0) {
-					ToggleReplaceScreen();
+					ToggleLayer(&manyLayer, REPLACE_SCREEN_IDX, REPLACE_SCREEN_IDX, 0, REPLACE_TXT_SIZE-1);
+					Sleep(100);
 					if (ReplaceStorage()) {
-						printf("help me\n");
 						StartGame(0, 0);
 					}
-					ToggleReplaceScreen();
+					ToggleLayer(&manyLayer, REPLACE_SCREEN_IDX, REPLACE_SCREEN_IDX, 0, REPLACE_TXT_SIZE - 1);
+					Sleep(100);
 				}
 				else
 					StartGame(idx, 0);

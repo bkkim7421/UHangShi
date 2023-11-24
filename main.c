@@ -44,9 +44,6 @@ void SoundEffect(char filePath[], MCI_OPEN_PARMS* soundEffect, int* dwID, bool l
 	return;
 }
 
-
-
-
 // thread reading mouse position and whether it is clicked
 void MouseThread() {
 	while (1) {
@@ -113,6 +110,16 @@ FILE* OpenStorage_i(int n, int rw)
 	fn[8] = (char)(n + 48);
 	md[0] = (!rw ? 'r' : 'w');
 	return fopen(fn, md);
+}
+
+void ToggleLayer(ManyLayer *ML, int img_s, int img_e, int txt_s, int txt_e)
+{
+	if(img_s>=0 && img_e>=0)
+		for (int i = img_s; i <= img_e; i++) 
+			ML->images[i].isHidden = !ML->images[i].isHidden;
+	if(txt_s>=0 && txt_e>=0)
+		for (int i = txt_s; i <= txt_e; i++) 
+			ML->texts[i].isHidden = !ML->texts[i].isHidden;
 }
 
 void Init()

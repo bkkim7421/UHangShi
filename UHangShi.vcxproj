@@ -144,6 +144,10 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="InGame\box.bmp" />
+    <Image Include="InGame\human\walking_human1.bmp" />
+    <Image Include="InGame\human\walking_human2.bmp" />
+    <Image Include="InGame\human\walking_human3.bmp" />
+    <Image Include="InGame\human\walking_human4.bmp" />
     <Image Include="InGame\start_bg.bmp" />
     <Image Include="MainPage\box.bmp" />
     <Image Include="MainPage\exit.bmp" />

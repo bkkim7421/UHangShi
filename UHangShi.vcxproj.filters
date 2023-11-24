@@ -22,6 +22,9 @@
     <Filter Include="리소스 파일\MainPage">
       <UniqueIdentifier>{36bc15af-ef57-491b-940e-e74a575124e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="리소스 파일\InGame\human">
+      <UniqueIdentifier>{e36cfb19-aba4-4838-aac2-6725952e4cab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -95,6 +98,18 @@
     </Image>
     <Image Include="InGame\start_bg.bmp">
       <Filter>리소스 파일\InGame</Filter>
+    </Image>
+    <Image Include="InGame\human\walking_human4.bmp">
+      <Filter>리소스 파일\InGame\human</Filter>
+    </Image>
+    <Image Include="InGame\human\walking_human1.bmp">
+      <Filter>리소스 파일\InGame\human</Filter>
+    </Image>
+    <Image Include="InGame\human\walking_human2.bmp">
+      <Filter>리소스 파일\InGame\human</Filter>
+    </Image>
+    <Image Include="InGame\human\walking_human3.bmp">
+      <Filter>리소스 파일\InGame\human</Filter>
     </Image>
   </ItemGroup>
 </Project>
