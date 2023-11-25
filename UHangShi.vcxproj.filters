@@ -25,6 +25,9 @@
     <Filter Include="리소스 파일\InGame\human">
       <UniqueIdentifier>{e36cfb19-aba4-4838-aac2-6725952e4cab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="리소스 파일\InGame\Flowers">
+      <UniqueIdentifier>{5140fe40-9019-4e8b-a4a3-dc4074512e3a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -110,6 +113,39 @@
     </Image>
     <Image Include="InGame\human\walking_human3.bmp">
       <Filter>리소스 파일\InGame\human</Filter>
+    </Image>
+    <Image Include="InGame\flowers\yanggwibi_on.bmp">
+      <Filter>리소스 파일\InGame\Flowers</Filter>
+    </Image>
+    <Image Include="InGame\flowers\yanggwibi.bmp">
+      <Filter>리소스 파일\InGame\Flowers</Filter>
+    </Image>
+    <Image Include="InGame\flowers\jangmi_on.bmp">
+      <Filter>리소스 파일\InGame\Flowers</Filter>
+    </Image>
+    <Image Include="InGame\flowers\jangmi.bmp">
+      <Filter>리소스 파일\InGame\Flowers</Filter>
+    </Image>
+    <Image Include="InGame\flowers\fourleaves_on.bmp">
+      <Filter>리소스 파일\InGame\Flowers</Filter>
+    </Image>
+    <Image Include="InGame\flowers\fourleaves.bmp">
+      <Filter>리소스 파일\InGame\Flowers</Filter>
+    </Image>
+    <Image Include="InGame\flowers\daema_on.bmp">
+      <Filter>리소스 파일\InGame\Flowers</Filter>
+    </Image>
+    <Image Include="InGame\flowers\daema.bmp">
+      <Filter>리소스 파일\InGame\Flowers</Filter>
+    </Image>
+    <Image Include="InGame\final_bg.bmp">
+      <Filter>리소스 파일\InGame</Filter>
+    </Image>
+    <Image Include="InGame\final_bg_school.bmp">
+      <Filter>리소스 파일\InGame</Filter>
+    </Image>
+    <Image Include="InGame\result.bmp">
+      <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
 </Project>

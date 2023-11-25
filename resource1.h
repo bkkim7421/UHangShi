@@ -18,12 +18,23 @@
 #define IDB_BITMAP14                    114
 #define IDB_BITMAP15                    115
 #define IDB_BITMAP16                    116
+#define IDB_BITMAP17                    117
+#define IDB_BITMAP20                    120
+#define IDB_BITMAP21                    121
+#define IDB_BITMAP22                    122
+#define IDB_BITMAP23                    123
+#define IDB_BITMAP24                    124
+#define IDB_BITMAP25                    125
+#define IDB_BITMAP26                    126
+#define IDB_BITMAP19                    129
+#define IDB_BITMAP18                    130
+#define IDB_BITMAP27                    131
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        117
+#define _APS_NEXT_RESOURCE_VALUE        132
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

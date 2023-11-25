@@ -103,12 +103,12 @@ void MouseThread() {
 	return;
 }
 
-// open n-th storage with mode ( 0 : read / 1 : write )
-FILE* OpenStorage_i(int n, int rw)
+// open n-th storage with mode ( 0 : read / 1 : write / 2 : append)
+FILE* OpenStorage_i(int n, int rwa)
 {
 	char fn[20] = "Storage_9.txt", md[5] = "X";
 	fn[8] = (char)(n + 48);
-	md[0] = (!rw ? 'r' : 'w');
+	md[0] = (!rwa ? 'r' : rwa==1 ? 'w' : 'a');
 	return fopen(fn, md);
 }
 
@@ -150,6 +150,7 @@ void Init()
 int main() {
 	Init();
 	MainPage();
+	srand(time(0));
 
 	//system("cls");
 	for (int i = 0; i < 4; i++) {

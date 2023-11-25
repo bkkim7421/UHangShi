@@ -76,6 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <CallingConvention>StdCall</CallingConvention>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,10 +145,21 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="InGame\box.bmp" />
+    <Image Include="InGame\final_bg.bmp" />
+    <Image Include="InGame\final_bg_school.bmp" />
+    <Image Include="InGame\flowers\daema.bmp" />
+    <Image Include="InGame\flowers\daema_on.bmp" />
+    <Image Include="InGame\flowers\fourleaves.bmp" />
+    <Image Include="InGame\flowers\fourleaves_on.bmp" />
+    <Image Include="InGame\flowers\jangmi.bmp" />
+    <Image Include="InGame\flowers\jangmi_on.bmp" />
+    <Image Include="InGame\flowers\yanggwibi.bmp" />
+    <Image Include="InGame\flowers\yanggwibi_on.bmp" />
     <Image Include="InGame\human\walking_human1.bmp" />
     <Image Include="InGame\human\walking_human2.bmp" />
     <Image Include="InGame\human\walking_human3.bmp" />
     <Image Include="InGame\human\walking_human4.bmp" />
+    <Image Include="InGame\result.bmp" />
     <Image Include="InGame\start_bg.bmp" />
     <Image Include="MainPage\box.bmp" />
     <Image Include="MainPage\exit.bmp" />
