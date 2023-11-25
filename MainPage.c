@@ -47,6 +47,7 @@ void MainLayerPaintThread()
 	return;
 }
 
+// functions checking mouse position
 bool OnNewgame(COORD p){ return 93 <= p.X && p.X <= 151 && 25 <= p.Y && p.Y <= 31; }
 bool OnLoad(COORD p) { return 93 <= p.X && p.X <= 151 && 34 <= p.Y && p.Y <= 41; }
 bool OnExit(COORD p) { return 93 <= p.X && p.X <= 151 && 43 <= p.Y && p.Y <= 50; }
@@ -87,7 +88,7 @@ void LoadStorage()
 					Storage[i] = OpenStorage_i(i, 0);
 
 					int PG;
-					fscanf(Storage[i], "%d", &PG);
+					fscanf(Storage[i], "%d", &PG); // input progress in text file
 
 					fclose(Storage[i]);
 					Storage[i] = NULL;
@@ -110,6 +111,7 @@ void LoadStorage()
 	return;
 }
 
+// return empty storage index. if there isn't any empty storage, return -1
 int GetEmptyStorage()
 {
 	for (int i = 0; i < 4; i++) {
@@ -124,6 +126,7 @@ int GetEmptyStorage()
 	return -1;
 }
 
+// replace storage when all storage is full
 bool ReplaceStorage()
 {
 	int input = 0;

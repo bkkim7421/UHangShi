@@ -112,6 +112,7 @@ FILE* OpenStorage_i(int n, int rwa)
 	return fopen(fn, md);
 }
 
+// toggle image or text in layer
 void ToggleLayer(ManyLayer *ML, int img_s, int img_e, int txt_s, int txt_e)
 {
 	if(img_s>=0 && img_e>=0)
@@ -122,6 +123,7 @@ void ToggleLayer(ManyLayer *ML, int img_s, int img_e, int txt_s, int txt_e)
 			ML->texts[i].isHidden = !ML->texts[i].isHidden;
 }
 
+// initial settings
 void Init()
 {
 	CIN = GetStdHandle(STD_INPUT_HANDLE);
@@ -141,6 +143,8 @@ void Init()
 	// change to mouse mode
 	SetConsoleMode(CIN, mode | ENABLE_MOUSE_INPUT);
 
+	srand(time(0));
+
 	_beginthreadex(NULL, 0, (_beginthreadex_proc_type)MouseThread, 0, 0, NULL);
 
 	return;
@@ -150,17 +154,8 @@ void Init()
 int main() {
 	Init();
 	MainPage();
-	srand(time(0));
 
-	//system("cls");
-	for (int i = 0; i < 4; i++) {
-		if (Storage[i] != NULL) {
-			fclose(Storage[i]);
-			Storage[i] = NULL;
-			printf("%d Storage closed\n", i);
-			printf("State : %d\n", (Storage[i] ? 1 : 0));
-		}
-	}
+	system("cls");
 	return 0;
 }
 

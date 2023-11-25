@@ -31,30 +31,33 @@ wchar_t* STRING;
 bool FlowerFlag = 1;
 bool GamePageFlag = 1;
 
+// thread painting layer repeatedly
 unsigned int __stdcall GameLayerPaintThread(void* arg)
 {
-	while(GamePageFlag){
+	while (GamePageFlag) {
 		GameLayer.renderAll(&GameLayer);
 		Sleep(10);
 	}
 }
 
+// thread making human image move
 unsigned int __stdcall HumanThread(void* arg)
 {
 	while (GamePageFlag) {
 
-		ToggleLayer(&GameLayer, HUMAN_IDX + human_frame, HUMAN_IDX + human_frame, -1, - 1);
+		ToggleLayer(&GameLayer, HUMAN_IDX + human_frame, HUMAN_IDX + human_frame, -1, -1);
 		GameLayer.images[HUMAN_IDX + human_frame].x = human.X;
 		GameLayer.images[HUMAN_IDX + human_frame].y = human.Y;
-		ToggleLayer(&GameLayer, HUMAN_IDX + (human_frame+1)%4, HUMAN_IDX + (human_frame+1)%4, -1, - 1);
-		GameLayer.images[HUMAN_IDX + (human_frame+1)%4].x = human.X;
-		GameLayer.images[HUMAN_IDX + (human_frame+1)%4].y = human.Y;
+		ToggleLayer(&GameLayer, HUMAN_IDX + (human_frame + 1) % 4, HUMAN_IDX + (human_frame + 1) % 4, -1, -1);
+		GameLayer.images[HUMAN_IDX + (human_frame + 1) % 4].x = human.X;
+		GameLayer.images[HUMAN_IDX + (human_frame + 1) % 4].y = human.Y;
 		human_frame = (human_frame + 1) % 4;
 
 		Sleep(250);
 	}
 }
 
+// calculate accuracy
 int Judgment(int dif)
 {
 	if (dif > 75)
@@ -67,6 +70,7 @@ int Judgment(int dif)
 		return 3;
 }
 
+// thread making flower showed and calculating score
 unsigned int __stdcall FlowerThread(int Flower)
 {
 	used[Flower] = (used[Flower] + 1) % 20;
@@ -77,19 +81,19 @@ unsigned int __stdcall FlowerThread(int Flower)
 		GameLayer.images[FlowerIdx].x -= 2;
 		dif = abs(GameLayer.images[FlowerIdx].x - 160);
 		if (dif <= 100) {
-			if (!Flower && key.D) {
+			if (!Flower && key.D) { // daema
 				jdg = Judgment(dif);
 				break;
 			}
-			if (Flower == 1 && key.J) {
+			if (Flower == 1 && key.J) { // fourleaves
 				jdg = Judgment(dif);
 				break;
 			}
-			if (Flower == 2 && key.K) {
+			if (Flower == 2 && key.K) { // jangmi
 				jdg = Judgment(dif);
 				break;
 			}
-			if (Flower == 3 && key.F) {
+			if (Flower == 3 && key.F) { // yanggwibi
 				jdg = Judgment(dif);
 				break;
 			}
@@ -100,12 +104,12 @@ unsigned int __stdcall FlowerThread(int Flower)
 	GameLayer.images[FlowerIdx].x = 3800;
 	Score += jdg * (FlowerIdx & 1 ? 2 : 1);
 
-	if (jdg >= 0) {
+	if (jdg >= 0) { // hit sound effect
 		SoundEffect("Musics/hit.wav", &HitMusic, &HitMusicID, 1, 0, 0);
 		SoundEffect("Musics/hit.wav", &HitMusic, &HitMusicID, 0, 1, 0);
 	}
 
-	if(STRING != NULL)
+	if (STRING != NULL)
 		free(STRING);
 	STRING = (wchar_t*)malloc(20 * sizeof(wchar_t));
 	swprintf(STRING, 20, L"Score : %d", Score);
@@ -116,6 +120,7 @@ unsigned int __stdcall FlowerThread(int Flower)
 	GameLayer.texts[6 + jdg].isHidden = true;
 }
 
+// thread making item move
 unsigned int __stdcall ItemThread(void* arg)
 {
 	Sleep(3250);
@@ -126,6 +131,7 @@ unsigned int __stdcall ItemThread(void* arg)
 	}
 }
 
+// thread making background move
 unsigned int __stdcall BGThread(void* arg)
 {
 	int mv = 2;
@@ -163,6 +169,7 @@ unsigned int __stdcall BGThread(void* arg)
 	}
 }
 
+// write progress in text file
 void WritePG(int N, int PG)
 {
 	Storage[N] = OpenStorage_i(N, 1);
@@ -171,18 +178,19 @@ void WritePG(int N, int PG)
 	Storage[N] = NULL;
 }
 
+// create in-game screen
 void StartGame(int N, int PG)
 {
 	SoundEffect("Musics/BabyElephantWalk60.wav", &MainMusic, &MainMusicID, 0, 0, 0);
 	MainPageFlag = 0;
 
-	human = (COORD){0, 800};
+	human = (COORD){ 0, 800 };
 	human_frame = 0;
 	front = 0;
 	BG_cnt = 0;
 	for (int i = 0; i < 4; i++)
 		used[i] = 0;
-	if(!GamePageFlag){
+	if (!GamePageFlag) {
 		GameLayer.initialize(&GameLayer);
 
 		GameLayer.images = (Image[]){
@@ -295,7 +303,7 @@ void StartGame(int N, int PG)
 		GameLayer.textCount = 11;
 
 		GamePageFlag = 1;
-		_beginthreadex(NULL, 0, (_beginthreadex_proc_type)GameLayerPaintThread, (void *)NULL, 0, NULL);
+		_beginthreadex(NULL, 0, (_beginthreadex_proc_type)GameLayerPaintThread, (void*)NULL, 0, NULL);
 	}
 
 	switch (PG) {
@@ -309,24 +317,25 @@ void StartGame(int N, int PG)
 			Sleep(300);
 			ToggleLayer(&GameLayer, -1, -1, i, i);
 			Sleep(1000);
- 			ToggleLayer(&GameLayer, -1, -1, 0, 0);
+			ToggleLayer(&GameLayer, -1, -1, 0, 0);
 			while (!key.SPACE);
 			ToggleLayer(&GameLayer, -1, -1, i, i);
 			ToggleLayer(&GameLayer, -1, -1, 0, 0);
 		}
 
 		ToggleLayer(&GameLayer, BOX_IDX, BOX_IDX, -1, -1);
-		
-	case 1:
+
+	case 1: // main game
 		WritePG(N, 1);
 		SoundEffect("Musics/InGameBGM.wav", &InGameMusic, &InGameMusicID, 1, 0, 0);
 		SoundEffect("Musics/InGameBGM.wav", &InGameMusic, &InGameMusicID, 0, 1, 0);
 
-		_beginthreadex(NULL, 0, (_beginthreadex_proc_type)HumanThread, (void *)NULL, 0, NULL);
-		_beginthreadex(NULL, 0, (_beginthreadex_proc_type)BGThread, (void *)NULL, 0, NULL);
-		_beginthreadex(NULL, 0, (_beginthreadex_proc_type)ItemThread, (void *)NULL, 0, NULL);
+		_beginthreadex(NULL, 0, (_beginthreadex_proc_type)HumanThread, (void*)NULL, 0, NULL);
+		_beginthreadex(NULL, 0, (_beginthreadex_proc_type)BGThread, (void*)NULL, 0, NULL);
+		_beginthreadex(NULL, 0, (_beginthreadex_proc_type)ItemThread, (void*)NULL, 0, NULL);
 		Sleep(90000);
-	case 2:
+
+	case 2: // game result
 		Storage[N] = OpenStorage_i(N, 0);
 		int PG;
 		fscanf(Storage[N], "%d", &PG);
@@ -371,4 +380,3 @@ void StartGame(int N, int PG)
 
 	return;
 }
-//
